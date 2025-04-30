@@ -3,9 +3,14 @@ const Fastify = require('fastify');
 
 const server = Fastify({ logger: true });
 
+server.register(require('fastify-cors'), {
+  origin: 'https://faktura-backend.onrender.com', 
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+  allowedHeaders: ['Content-Type', 'Authorization'], 
+});
+
 server.register(require('./app'));
 
-// ✅ Correct syntax for setting both port and host
 server.listen({ port: process.env.PORT, host: '0.0.0.0' }, (err, address) => {
   if (err) {
     server.log.error(err);
