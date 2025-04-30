@@ -3,10 +3,16 @@ const Fastify = require('fastify');
 
 const server = Fastify({ logger: true });
 
-server.register(require('fastify-cors'), {
-  origin: 'https://faktura-backend.onrender.com', 
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], 
-  allowedHeaders: ['Content-Type', 'Authorization'], 
+server.addHook('onRequest', (req, res, done) => {
+  res.header('Access-Control-Allow-Origin', 'https://faktura-backend.onrender.com');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  
+  if (req.method === 'OPTIONS') {
+    res.status(200).send();
+  } else {
+    done();
+  }
 });
 
 server.register(require('./app'));
