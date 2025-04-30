@@ -4,7 +4,7 @@ const Fastify = require('fastify');
 const server = Fastify({ logger: true });
 
 server.addHook('onRequest', (req, res, done) => {
-  res.header('Access-Control-Allow-Origin', 'https://faktura-backend.onrender.com');
+  res.header('Access-Control-Allow-Origin', 'http://localhost:5173','https://marvelous-figolla-1f9847.netlify.app' );
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   
