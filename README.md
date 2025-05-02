@@ -19,7 +19,7 @@
 
 <h2 id="started">🚀 Getting started</h2>
 
-Here's how to run your project locally
+Here's how to run this project locally
 
 <h3>Cloning</h3>
 
@@ -38,7 +38,7 @@ PORT=
 
 <h3>Starting</h3>
 
-How to start your project
+How to start this project
 
 ```bash
 cd backend
