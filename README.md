@@ -23,10 +23,10 @@ Here's how to run your project locally
 
 <h3>Cloning</h3>
 
-How to clone your project
+How to clone this project
 
 ```bash
-git clone your
+git clone https://github.com/Abhay17pawar/faktura_backend.git
 ```
 
 <h3>Config .env variables</h2>
