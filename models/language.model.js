@@ -11,6 +11,10 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,  
       allowNull: false
     },
+    order: {
+      type: DataTypes.TEXT,  
+      allowNull: false
+    },
     our_customers: {
       type: DataTypes.TEXT,
       allowNull: false
@@ -20,6 +24,10 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     contact_us: {
+      type: DataTypes.TEXT,  
+      allowNull: false
+    },
+    terms: {
       type: DataTypes.TEXT,  
       allowNull: false
     },
