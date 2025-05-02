@@ -1,4 +1,4 @@
-const { language } = require('../models'); // adjust path as needed
+const { language } = require('../models/language.model'); // adjust path as needed
 
 exports.getSelectedLanguage = async (req, res) => {
   try {
