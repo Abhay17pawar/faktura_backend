@@ -23,14 +23,7 @@ exports.getSelectedLanguage = async (req, res) => {
         return res.status(400).send({ message: 'All fields are required' });
       }
   
-      const newLang = await language.create({
-        home,
-        our_customers,
-        about_us,
-        contact_us,
-        button,
-        paragraph,
-      });
+      const newLang = await language.create(req.body);
   
       return res.status(201).send(newLang);
     } catch (error) {
