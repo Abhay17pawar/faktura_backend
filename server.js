@@ -1,18 +1,23 @@
 require('dotenv').config();
 const Fastify = require('fastify');
+const cors = require('@fastify/cors');
 
 const server = Fastify({ logger: true });
 
-server.addHook('onRequest', (req, res, done) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:5173','https://marvelous-figolla-1f9847.netlify.app' );
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  
-  if (req.method === 'OPTIONS') {
-    res.status(200).send();
-  } else {
-    done();
-  }
+server.register(cors, {
+  origin: (origin, cb) => {
+    const allowedOrigins = [
+      'http://localhost:5173',
+      'https://marvelous-figolla-1f9847.netlify.app'
+    ];
+    if (!origin || allowedOrigins.includes(origin)) {
+      cb(null, true);
+    } else {
+      cb(new Error("Not allowed by CORS"));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 });
 
 server.register(require('./app'));
