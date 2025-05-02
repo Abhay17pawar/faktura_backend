@@ -1,9 +1,7 @@
-const { Language } = require('../models/language.model'); // adjust path as needed
-
 exports.getSelectedLanguage = async (req, res) => {
     try {
       const id = req.params.id || 1;
-      const lang = await Language.findByPk(id);
+      const lang = await req.server.models.Language.findByPk(id);
   
       if (!lang) {
         return res.status(404).send({ message: 'Language details not found' });
@@ -23,7 +21,7 @@ exports.getSelectedLanguage = async (req, res) => {
         return res.status(400).send({ message: 'All fields are required' });
       }
   
-      const newLang = await Language.create(req.body);
+      const newLang = await req.server.models.Language.create(req.body);
   
       return res.status(201).send(newLang);
     } catch (error) {
