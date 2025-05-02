@@ -15,9 +15,9 @@ exports.getSelectedLanguage = async (req, res) => {
 
 exports.postLanguageDetails = async (req, res) => {
   try {
-    const { home, our_customers, about_us, contact_us, button, paragraph, order, terms } = req.body;
+    const { home,order, our_customers, about_us, contact_us,terms, button, paragraph } = req.body;
 
-    if (!home || !our_customers || !about_us || !contact_us || !button || !paragraph || !order || !terms) {
+    if (!home || !order || !our_customers || !about_us || !contact_us || !terms || !button || !paragraph || !order || !terms) {
       return res.status(400).send({ message: 'All fields are required' });
     }
 
